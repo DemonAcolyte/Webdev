@@ -18,7 +18,7 @@
     catch(mysqli_sql_exception){
         echo "Error: Cannot connect.";
     }
-    
+    //Sample push
     
 
     ?>
