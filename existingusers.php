@@ -1,13 +1,47 @@
 <?php
-include("database.php");
+    session_start();
+    include("database.php");
+    
 
-$query = 'SELECT *FROM users';
+    if ($conn->connect_error){
+        die("Connection Failed: ". $conn->connect_error);
+    }
 
-$result = mysqli_query($conn, $query);
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
+        if (empty($username) || empty($password)){
+            header("Location: index.php");
+            die("Username and Password is required");
+        }
+        
 
-mysqli_free_result($result);
-//fjjad
-mysqli_close($conn);
+
+    $sql = "SELECT user, password FROM users WHERE user = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+   
+    if ($stmt->num_rows > 0){
+        $stmt->bind_result($db_username, $db_password);
+        $stmt->fetch();
+        
+        
+        if ($password === $db_password){
+        $_SESSION['username'] = $db_username;
+        echo "Login Successful! Welcome $db_username!";
+        } else{
+        echo "Invalid Password";
+        } 
+
+    } else{
+    echo"User not found";
+    }
+    $stmt->close();
+    
+    
+    $conn->close();
+    
 ?>

@@ -1,47 +1,36 @@
 
-<?php
-    session_start();
-    include("database.php");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="existingUsers.php" method="post" autocomplete="off">
+        <h2>Login</h2>
 
+        <div class="grid">
 
-    if ($conn->connect_error){
-        die("Connection Failed: ". $conn->connect_error);
-    }
-    if ($_SERVER['REQUEST METHOD'] == 'POST'){
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
+        <div>
+            <label>Username</label>
+            <input type="text" name="username">
+            
+        </div>
+        <div>
+            <br>
+            <label>Password</label>
+            <input type="password" name="password">
+            
+        </div>
 
+        </div>
+        <br>
+        <button type ="submit" name = "submit">Submit</button>
 
-        if (empty($username) || empty($password)){
-            die("Username and Password is required");
-        }
-    
-
-
-    $sql = "SELECT username, password FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-   
-    if ($stmt->num_rows > 0){
-        $stmt->bind_result($db_username, $db_password);
-        $stmt->fetch();
-    
-
-        if (password_verify($password, $db_password)){
-        $_SESSION['username'] = $db_username;
-        echo "Login Successful! Welcome $db_username!";
-        } else{
-        echo "Invalid Password";
-        }
-
-    } else{
-    echo"User not found";
-    }
-    $stmt->close();
-    }
-    $conn->close();
-
-?>
-
+        <p>Don't have an account?
+            <a href="index.php">Register here</a>
+        </p>
+    </form>
+</body>
+</html>

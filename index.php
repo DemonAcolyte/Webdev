@@ -1,29 +1,4 @@
-<?php
-include("database.php");
 
-session_start();
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    
-    if ($username === 'admin' && $password === 'password') {
-        
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-
-        
-        header("Location: index.php");
-        exit();
-    } else {
-        echo "Invalid username or password.";
-    }
-}
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
-    <form action="newusers.php" method="post" autocomplete="off">
+    <form action="newUsers.php" method="post" autocomplete="off">
         <h2>Sign Up</h2>
 
         <div class="grid">
