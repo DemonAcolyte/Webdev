@@ -1,12 +1,9 @@
 <?php
 
-
-    
-
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "websitedb";
+    $db_name = "BookExchange";
 
     $conn = "";
 
@@ -18,7 +15,7 @@
     catch(mysqli_sql_exception){
         echo "Error: Cannot connect.";
     }
-    //Sample push
+    
     
 
     ?>
