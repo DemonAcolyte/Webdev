@@ -10,7 +10,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        
+        //Security Measure
         if (empty($username) || empty($password)){
             header("Location: index.php");
             die("Username and Password is required");
