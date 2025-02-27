@@ -15,10 +15,12 @@
             header("Location: index.php");
             die("Username and Password is required");
         }
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         
 
 
-    $sql = "SELECT user, password FROM users WHERE user = ?";
+    $sql ="SELECT username, password_hash FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -29,9 +31,9 @@
         $stmt->fetch();
         
         
-        if ($password === $db_password){
+        if (password_verify($password,$hashed_password)){
         $_SESSION['username'] = $db_username;
-        echo "Login Successful! Welcome $db_username!";
+        header("Location: sample.php");
         } else{
         echo "Invalid Password";
         } 
