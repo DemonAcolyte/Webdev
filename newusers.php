@@ -3,19 +3,36 @@ include("database.php");
 
 $username = $_POST["username"];
 $password = $_POST["password"];
+$email = $_POST["email"];
+$password = $_POST["password"];
+$created_at = date(format: "Y-m-d H:i:s");
 
-$sql = "INSERT INTO users(user, password, role) 
-        VALUES ('$username', '$password', 'user')";
+$password_hashed = password_hash($password, PASSWORD_DEFAULT);
+$sql = "INSERT INTO users(username, email, password_hash, created_at) 
+        VALUES (?, ?, ?, ?)";
 
-try{
-    mysqli_query($conn, $sql);
-    echo "User is now registered";
+$stmt = $conn ->prepare($sql);
+
+if ($stmt){
+    $stmt->bind_param('ssss', $username, $email, $password_hashed, $created_at);
+
+    if($stmt->execute()){
+        echo'User registered';
+    }
+    else{
+        echo "Error Registering".$stmt->error;
+    }
+
+    $stmt->close();
+
+
+
+}else {
+    echo "Error preparing statement";
 }
-catch(mysqli_sql_exception){
-    echo "could not register user";
-}
 
-mysqli_close($conn);
+$conn ->close();
+
 
 
 
