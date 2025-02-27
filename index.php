@@ -1,46 +1,38 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Document</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
+    
 </head>
 <body>
-    <form action="newUsers.php" method="post" autocomplete="off">
-        <h2>Sign Up</h2>
+<form action="existingUsers.php" method="post" autocomplete="off">
+        
 
-        <div class="grid">
-
-        <div>
-            <label>Username</label>
-            <input type="text" name="username">
+        <div class="login">
+        <h2>Login</h2>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="Type your username">
             
         </div>
-        <div>
+        <div class="input-group">
             <br>
             <label>Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" placeholder = "Type your password">
             
         </div>
-
-        <div>
-            <br>
-            <label>Confirm Password</label>
-            <input type ="password" name="confirm-password">
-
-        </div>
-
-        </div>
         <br>
-        <button type = "submit" name = "submit">Submit</button>
+        <button type ="submit" name = "submit">Login</button>
 
-        <p>Already have an account?
-            <a href="login.php">Login here</a>
+        <p>Don't have an account?
+            <a href="registration.php">Register here</a>
         </p>
+        </div>
+        
     </form>
 </body>
 </html>
-
