@@ -17,7 +17,7 @@
     <ul>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
-      <li><a href="#">Feedback</a></liid>
+      <li><a href="registration.php">Register</a></liid>
     </ul>
     </div>
 </nav>
