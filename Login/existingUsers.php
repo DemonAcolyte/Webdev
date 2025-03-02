@@ -1,21 +1,22 @@
 <?php
     session_start();
-    include("database.php");
+    include("../Database/database.php");
     
 
     if ($conn->connect_error){
         die("Connection Failed: ". $conn->connect_error);
     }
 
+    if($_SERVER["REQUEST_METHOD"] === 'POST'){
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         //Security Measure
         if (empty($username) || empty($password)){
-            header("Location: index.php");
+            header("Location: ../index.php");
             die("Username and Password is required");
         }
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+       
 
         
 
@@ -30,10 +31,15 @@
         $stmt->bind_result($db_username, $db_password);
         $stmt->fetch();
         
+       
+        $_SESSION['user_id'] = 1;
+        if (password_verify($password, $db_password)){
         
-        if (password_verify($password,$hashed_password)){
         $_SESSION['username'] = $db_username;
-        header("Location: sample.php");
+        header("Location: ../Users/users.php");
+        
+        exit();
+
         } else{
         echo "Invalid Password";
         } 
@@ -45,5 +51,5 @@
     
     
     $conn->close();
-    
+}
 ?>

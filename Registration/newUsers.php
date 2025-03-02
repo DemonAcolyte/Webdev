@@ -1,10 +1,9 @@
 <?php
-include("database.php");
+include("../Database/database.php");
 
 $username = $_POST["username"];
 $password = $_POST["password"];
 $email = $_POST["email"];
-$password = $_POST["password"];
 $created_at = date(format: "Y-m-d H:i:s");
 
 $password_hashed = password_hash($password, PASSWORD_DEFAULT);
