@@ -1,0 +1,38 @@
+#hamburger{
+    fill: black;
+    height: 38px;
+    width: 38px;
+    
+}
+#sidebar{
+    width: 250px;
+    margin-top: 76px;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: list-item;
+    overflow: hidden;
+}
+
+.sidebar-item{
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    padding: 10px;
+    height: 0px;
+    width: 0px;
+    
+}
+
+.category{
+    padding: 0.2em;
+    margin-left: 32px;
+    border-bottom: black solid;
+}
+#large-category{
+    padding: 0.3em;
+    border-bottom: black solid;
+}

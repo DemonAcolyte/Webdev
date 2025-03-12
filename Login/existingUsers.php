@@ -13,7 +13,7 @@
 
         //Security Measure
         if (empty($username) || empty($password)){
-            header("Location: ../index.php");
+            header("Location: ../index.html");
             die("Username and Password is required");
         }
        

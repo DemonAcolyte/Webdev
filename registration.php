@@ -16,7 +16,7 @@
      <ul class="design">
        <li><a href="#">About</a></li>
        <li><a href="#">Contact</a></li>
-       <li><a href="index.php">Login</a></li>
+       <li><a href="index.html">Login</a></li>
      </ul>
      </div>
     </nav>
@@ -47,7 +47,7 @@
         <button class="button1" type = "submit" name = "submit">Submit</button>
 
         <p>Already have an account?
-            <a href="index.php">Login here</a>
+            <a href="index.html">Login here</a>
         </p>
 
         </div>
